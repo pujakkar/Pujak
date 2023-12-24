@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h>  //build tree from postorder and inorder
 using namespace std;
 struct node{
     int data;
