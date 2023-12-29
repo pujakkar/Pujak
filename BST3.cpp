@@ -1,4 +1,4 @@
-#include<bits/stdc++.h> 
+#include<bits/stdc++.h> //build bst from preorder
 using namespace std;
 struct node{
     int data;
