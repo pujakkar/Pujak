@@ -22,7 +22,7 @@ int largestDistance(int arr[],int n,int k){
     while(left<right){
         int mid=(left+right)/2;
         if(isFeasible(arr,n,k,mid)){
-            result=max(result,mid);
+            result=mid;
             left=mid+1; //right half of array
         }
         else{

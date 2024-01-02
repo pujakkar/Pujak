@@ -4,18 +4,15 @@ bool isPossible(int arr[],int n,int m,int mid){
     int reqStudents=1;
     int sum=0;
     for(int i=0;i<n;i++){
-        if(arr[i]>mid){
-            return false;
-        }
-        if(arr[i]+sum>mid){
-            reqStudents++;
-            sum=arr[i];
-            if(reqStudents>m){
-                return false;
-            }
+        if(arr[i]+sum<=mid){
+            sum+=arr[i];  //represents the number of pages allocated to the existing student
         }
         else{
-            sum+=arr[i];
+            reqStudents++;
+            if(reqStudents>m || arr[i]>mid){
+                return false;
+            }
+            sum=arr[i];
         }
     }
     return true;
@@ -27,7 +24,7 @@ int maxPages(int arr[],int n,int m){{
     int start=0;
     int end;
     int sum=0;
-    int result=INT_MAX;
+    int ans=-1;
     for(int i=0;i<n;i++){
         sum+=arr[i];
     }
@@ -35,14 +32,14 @@ int maxPages(int arr[],int n,int m){{
     while(start<=end){
         int mid=(start+end)/2;
         if(isPossible(arr,n,m,mid)){
-            result=min(result,mid);
-            end=mid-1;
+            ans=mid;
+            end=mid-1; //we want minimum ans that's why we want to optimize the solution in the minumum search space
         }
         else{
             start=mid+1;
         }
     }
-    return result;
+    return ans;
 }}
 int32_t main(){
     int arr[]={12,34,67,90};
