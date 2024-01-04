@@ -18,12 +18,8 @@ node* constructTree(int preorder[],int* index,int key,int min,int max,int n){
     if(key>min && key<max){
         root=new node(key);
         *index=*index+1;
-        if(*index<n){
-            root->left=constructTree(preorder,index, preorder[*index],min ,key,n);
-        }
-        if(*index<n){
-            root->right=constructTree(preorder,index,preorder[*index],key,max,n);
-        }
+        root->left=constructTree(preorder,index, preorder[*index],min ,key,n);
+        root->right=constructTree(preorder,index,preorder[*index],key,max,n);
     }
     return root;
 }
